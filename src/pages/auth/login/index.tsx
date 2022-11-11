@@ -69,14 +69,14 @@ const Login: React.FC = () => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+            <LockOutlinedIcon style={{ color: "red" }} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Formik
             initialValues={initialValues}
-            onSubmit={() => {}}
+            onSubmit={() => { }}
             validationSchema={LoginSchema}
           >
             {({ errors, touched, isSubmitting, isValid, dirty }) => (
