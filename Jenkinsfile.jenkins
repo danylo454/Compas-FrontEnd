@@ -12,6 +12,15 @@ pipeline  {
         timestamps()
     }
     stages {
+        stage("Removing old containers") {
+            steps {
+                echo 'Removing images ...'
+                 dir('.'){
+                    sh "docker stop compass_frontend "
+                    sh "docker rm compass_frontend "
+                }
+            }
+        }
         stage("Removing old images") {
             steps {
                 echo 'Removing images ...'
