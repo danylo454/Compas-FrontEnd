@@ -17,14 +17,18 @@ import { RegisterSchema } from "../validation";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { Navigate } from "react-router-dom";
+import Loader from "../../../components/loader";
 
 const Register: React.FC = () => {
   const [role, setRole] = useState("Users");
   const { RegisterUser } = useActions();
-  const { message } = useTypedSelector((store) => store.UserReducer);
+  const { message, loading } = useTypedSelector((store) => store.UserReducer);
 
   if (message === "User successfully created.") {
     return <Navigate to="/dashboard/users" />;
+  }
+  if (loading) {
+    return <Loader />;
   }
 
   const initialValues = {
